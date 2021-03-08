@@ -1,0 +1,13 @@
+gcloud components install kubectl # won't work for ubuntu
+sudo apt-get install kubectl # for ubuntu
+gcloud config set project root-melody-306922
+gcloud config set compute/zone australia-southeast1-b
+
+# permissive cluster with Istio enabled
+gcloud beta container clusters create asyncfeedback \
+    --addons=Istio --istio-config=auth=MTLS_PERMISSIVE \
+    --cluster-version=1.4.10-gke.5 \
+    --machine-type=n1-standard-2 \
+    --num-nodes=4
+
+
