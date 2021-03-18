@@ -7,6 +7,9 @@ gcloud config set project $PROJECT
 kubectl create serviceaccount $APP
 gcloud iam service-accounts create $APP
 
+gcloud container clusters update asyncfeedback \
+  --workload-pool=$PROJECT.svc.id.goog
+
 GSA="$APP@$PROJECT.iam.gserviceaccount.com"
 
 gcloud projects add-iam-policy-binding $PROJECT\
